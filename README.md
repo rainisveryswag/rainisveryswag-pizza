@@ -1,59 +1,48 @@
-# 🍕 CulinaPizza
+CulinaPizza
+A native Android pizza recipe app built in Java at ENSA Marrakech by Yousra Zarri.
 
-> A native Android recipe application for pizza lovers — built with Java at ENSA Marrakech.
+Features
+Splash Screen — Fade-in animation via AlphaAnimation, auto-transitions after 2.5 seconds.
+Pizza Catalog — Scrollable ListView of 10 pizza varieties with thumbnails, names, prep times, and prices.
+Recipe Detail View — Full breakdown per pizza: image, ingredients, description, and step-by-step instructions in a ScrollView.
+In-Memory Data — Singleton PizzaProvider keeps data consistent across the session with no database required.
+Pizza Menu
+#	Name	Price	Prep Time
+1	Royal Blue Margherita	$2	25 min
+2	Golden Truffle Mushroom	$4	35 min
+3	Raini Signature Supreme	$5	40 min
+4	Spicy Honey Pepperoni	$3	30 min
+5	Mediterranean Veggie	$3	30 min
+6	Blue Cheese Steak Pizza	$5	45 min
+7	Smoky BBQ Pulled Pork	$4	35 min
+8	Prosciutto & Fig	$3	25 min
+9	Chicken Pesto Royale	$3	35 min
+10	Four Cheese Gold	$4	30 min
+Architecture
+SplashActivity (2.5s fade-in)
+    ↓
+ListPizzaActivity  ←  CustomPizzaAdapter  ←  PizzaProvider (Singleton)
+    ↓ (PIZZA_ID via Intent)
+PizzaDetailActivity
+Package	Contents
+classes	PizzaEntity — data model
+dao	IDao<T> — generic CRUD interface
+services	PizzaProvider — singleton data layer
+adapter	CustomPizzaAdapter — ListView adapter
+ui	SplashActivity, ListPizzaActivity, PizzaDetailActivity
+Tech Stack
+Language	Java
+Min SDK	24 (Android 7.0)
+Target SDK	36
+Build	Gradle 9.1.0 (Kotlin DSL)
+UI	AppCompat + Material Design 1.13.0
+Layout	XML with ConstraintLayout & card-based design
+Navigation	Intent-based with entity ID passing
+Getting Started
+Clone the repository
+Open in Android Studio
+Build and run on an emulator or device (API 24+)
+Academic Context
+Developed as a mobile development lab project at ENSA Marrakech, demonstrating custom adapters, Intent-based navigation, Singleton pattern, DAO abstraction, and layered MVC-style architecture.
 
-**Author:** Yousra Zarri
-
----
-
-## About
-
-CulinaPizza is a native Android application developed in Java as part of a university lab project at ENSA Marrakech. The app lets users browse a diverse pizza menu, check preparation times and pricing, and follow detailed step-by-step recipe instructions.
-
----
-
-## Features
-
-- **Splash Screen** — Animated launch screen using a smooth fade-in effect via `AlphaAnimation`.
-- **Pizza Catalog** — Scrollable list powered by a custom `BaseAdapter`, displaying thumbnails, names, and prices.
-- **Recipe Detail View** — Full recipe breakdown including ingredients, description, and preparation steps, wrapped in a `ScrollView` for easy reading.
-- **In-Memory Data Persistence** — Singleton pattern keeps data consistent and accessible throughout the session.
-
----
-
-## Project Structure
-
-The codebase is organized into clearly separated packages to keep the architecture clean and maintainable:
-
-| Package | Responsibility |
-|---|---|
-| `classes` | Business entity — `PizzaEntity` |
-| `dao` | Generic `IDao<T>` interface defining core CRUD operations |
-| `services` | Data logic layer — `PizzaProvider` handles storage and retrieval |
-| `adapter` | `CustomPizzaAdapter` — bridges data to UI components |
-| `ui` | Activities for each screen: Splash, List, and Detail |
-
----
-
-## Tech Stack
-
-| | |
-|---|---|
-| **Language** | Java |
-| **Layouts** | XML with custom styles and card-based design |
-| **Navigation** | `Intent`-based, passing entity IDs between activities |
-| **Design Pattern** | Singleton for data management |
-
----
-
-## Getting Started
-
-1. Clone the repository
-2. Open the project in **Android Studio**
-3. Build and run on an emulator or physical device (API level 21+)
-
----
-
-## Academic Context
-
-This project was developed as part of a mobile development lab at **ENSA Marrakech**. It demonstrates core Android concepts including custom adapters, activity navigation with intents, and separation of concerns through layered architecture.
+Author: Yousra Zarri
